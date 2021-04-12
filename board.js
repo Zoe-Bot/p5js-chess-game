@@ -3,32 +3,16 @@ class Board {
         this.x = 0
         this.y = 0
         this.fieldSize = 50
-        this.black = {
-            queen : "Queen",
-            king : "King",
-            tower : "tower",
-            horse : "Horse",
-            runner : "Runner",
-            pawn : "Pawn"
-        }
-        this.white = {
-            queen : "Queen",
-            king : "King",
-            tower : "Tower",
-            horse : "Horse",
-            runner : "Runner",
-            pawn : "Pawn"
-        }
         
         this.board = [
-            [this.black.tower, this.white.tower, this.black.runner, this.black.king, this.black.queen, this.black.runner, this.black.horse, this.black.tower],
+            [new Tower("black"), new Horse("black"), new Runner("black"), new Queen("black"), new King("black"), new Runner("black"), new Horse("black"), new Tower("black")],
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
-            ["", "", "", "", "", "", "", ""]
+            [new Tower("white"), new Horse("white"), new Runner("white"), new Queen("queen", "white"), new King("white"), new Runner("white"), new Horse("white"), new Tower("white")]
         ]
     }
 
@@ -46,15 +30,15 @@ class Board {
                 colorCheck++;
                 rect(cache, this.y, this.fieldSize, this.fieldSize);
 
-                if (field in this.black)
+                //console.log(field.player);
+                if (field.player == "black")
                     fill(50, 50, 50)
                 else
                     fill(200, 200, 200)
 
                 ellipseMode(CORNER);
-                switch (field) {
-                    case this.black.tower:
-                    case this.white.tower:
+                switch (field.name) {
+                    case "tower":
                         ellipse(cache, this.y, this.fieldSize, this.fieldSize);
                 }
             })
