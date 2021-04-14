@@ -12,7 +12,7 @@ class Board {
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", ""],
-            ["", "", "", "", "", "", "", ""]
+            [new Tower("white"), new Horse("white"), new Runner("white"), new Queen("queen", "white"), new King("white"), new Runner("white"), new Horse("white"), new Tower("white")]
         ]
     }
 
@@ -30,16 +30,15 @@ class Board {
                 colorCheck++;
                 rect(cache, this.y, this.fieldSize, this.fieldSize);
 
-                console.log(field.player)
+                //console.log(field.player);
                 if (field.player == "black")
                     fill(50, 50, 50)
                 else
                     fill(200, 200, 200)
 
                 ellipseMode(CORNER);
-                switch (field.constructor.name) {
-                    case "Tower":
-                        console.log("touchStarted()")
+                switch (field.name) {
+                    case "tower":
                         ellipse(cache, this.y, this.fieldSize, this.fieldSize);
                 }
             })
